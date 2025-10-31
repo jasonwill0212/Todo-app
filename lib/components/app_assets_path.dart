@@ -8,4 +8,5 @@ class AppAssetsPath {
   static const String imgAvatar = 'assets/images/img_avatar.png';
 
   /// icons
+  static const String icPlusCircle = 'assets/icons/ic_plus_circle.svg';
 }

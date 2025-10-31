@@ -57,6 +57,6 @@ class AppTextStyle {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
     fontSize: 10,
-    color: AppColor.TealBlue,
+    color: AppColor.tealBlue,
   );
 }

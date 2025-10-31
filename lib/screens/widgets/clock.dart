@@ -4,14 +4,9 @@ import 'package:todo_app/components/app_color.dart';
 import 'package:todo_app/components/app_text.dart';
 import 'package:todo_app/components/app_text_style.dart';
 
-class Clock extends StatefulWidget {
+class Clock extends StatelessWidget {
   const Clock({super.key});
 
-  @override
-  State<Clock> createState() => _ClockState();
-}
-
-class _ClockState extends State<Clock> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -22,7 +17,7 @@ class _ClockState extends State<Clock> {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black.withValues(alpha: 0.4),
                 blurRadius: 6,
                 offset: const Offset(2, 2),
               ),
@@ -31,12 +26,12 @@ class _ClockState extends State<Clock> {
           child: AnimatedAnalogClock(
             size: 120,
             clock: () => DateTime.now(),
-            backgroundColor: AppColor.SoftPinkishWhite,
-            hourHandColor: AppColor.TealBlue,
+            backgroundColor: AppColor.softPinkishWhite,
+            hourHandColor: AppColor.tealBlue,
             minuteHandColor: AppColor.lightteal,
             secondHandColor: AppColor.lightgray,
-            hourDashColor: AppColor.SoftPinkishWhite,
-            minuteDashColor: AppColor.SoftPinkishWhite,
+            hourDashColor: AppColor.softPinkishWhite,
+            minuteDashColor: AppColor.softPinkishWhite,
           ),
         ),
 
@@ -44,11 +39,11 @@ class _ClockState extends State<Clock> {
           width: 12,
           height: 12,
           decoration: BoxDecoration(
-            color: AppColor.NeutralGray,
+            color: AppColor.neutralGray,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black.withValues(alpha: 0.4),
                 blurRadius: 5,
                 offset: const Offset(0, 4),
               ),
