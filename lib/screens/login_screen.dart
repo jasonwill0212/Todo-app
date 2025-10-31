@@ -1,72 +1,89 @@
 import 'package:todo_app/components/app_assets_path.dart';
 import 'package:todo_app/components/app_button.dart';
+import 'package:todo_app/components/app_color.dart';
+import 'package:todo_app/components/app_text.dart';
 import 'package:todo_app/components/app_text_field.dart';
-import 'package:todo_app/dashboard_screen.dart';
+import 'package:todo_app/components/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:todo_app/screens/dashboard_screen.dart';
 import 'package:todo_app/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final EdgeInsetsGeometry? padding;
+  const LoginScreen({super.key, this.padding});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  get padding => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFF6F6F6),
-      body: Stack(
+      backgroundColor: AppColor.white100,
+      body: Column(
         children: [
-          Positioned(
-            top: -109,
-            left: -99,
-            child: Image.asset(
-              AppAssetsPath.imgCircle,
-              width: 380,
-              height: 380,
+          Align(
+            alignment: Alignment.topLeft,
+            child: Image.asset(AppAssetsPath.imgCircle),
+          ),
+          AppText(text: "Welcome Back!", style: AppTextStyle.tsSemiBoldBlack18),
+          const SizedBox(height: 20),
+          DottedBorder(
+            options: RectDottedBorderOptions(
+              dashPattern: [10, 5],
+              strokeWidth: 1,
+              padding: padding ?? const EdgeInsets.all(30),
+            ),
+            child: Image.asset(AppAssetsPath.imgPersonAndPhoneWithNotification),
+          ),
+          SizedBox(height: 50),
+          AppTextField(hintText: "Enter your email"),
+          SizedBox(height: 21),
+          AppTextField(hintText: "Enter password", isPassword: true),
+          SizedBox(height: 25),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RegistrationScreen(),
+                ),
+              );
+            },
+            child: AppText(
+              text: "Forgot Password",
+              style: AppTextStyle.tsRegularLightBlue14,
             ),
           ),
-          Column(
+          SizedBox(height: 24),
+          AppButton(
+            buttonText: "Sign In",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DashboardScreen(),
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 29),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 196),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Welcome Back!",
-                  style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+              AppText(
+                text: "Don’t have an account ? ",
+                style: AppTextStyle.tsRegularBlack14,
               ),
-              const SizedBox(height: 10),
-              Center(
-                child: DottedBorder(
-                  child: SizedBox(
-                    width: 240,
-                    height: 200,
-                    child: Center(
-                      child: Image.asset(
-                        "assets/images/undraw_my_notifications_rjej.png",
-                      ),
-                    ),
-                  ),
-                  options: RectDottedBorderOptions(
-                    strokeWidth: 1,
-                    dashPattern: [8, 9],
-                  ),
-                ),
-              ),
-              SizedBox(height: 26),
-              AppTextField(hintText: "Enter your email"),
-              SizedBox(height: 21),
-              AppTextField(hintText: "Enter password", isPassword: true),
-              SizedBox(height: 25),
               InkWell(
+                child: AppText(
+                  text: "Sign Up",
+                  style: AppTextStyle.tsBoldLightBlue14,
+                ),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -75,61 +92,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   );
                 },
-
-                child: Container(
-                  child: Text(
-                    "Forgot Password",
-                    style: TextStyle(
-                      color: Color(0XFF50C2C9),
-                      fontFamily: "Poppins",
-                      fontSize: 14,
-                    ),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 24),
-
-              AppButton(
-                buttonText: "Sign In",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const DashboardScreen(),
-                    ),
-                  );
-                },
-              ),
-
-              SizedBox(height: 29),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don’t have an account ? "),
-
-                  InkWell(
-                    child: Container(
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Color(0XFF50C2C9),
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegistrationScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
               ),
             ],
           ),

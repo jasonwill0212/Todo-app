@@ -41,4 +41,22 @@ class AppTextStyle {
     fontSize: 14,
     color: AppColor.lightBlue,
   );
+  static const TextStyle tsRegularLightBlue14 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    color: AppColor.lightBlue,
+  );
+  static const TextStyle tsSemiBoldBlack12 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    color: AppColor.black,
+  );
+  static const TextStyle tsSemiBoldTealBlue10 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    fontSize: 10,
+    color: AppColor.TealBlue,
+  );
 }
